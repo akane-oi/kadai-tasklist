@@ -8,11 +8,14 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
     end
   end
+
   def show
   end
+
   def new
     @task = Task.new
   end
+
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
@@ -24,8 +27,10 @@ class TasksController < ApplicationController
       render :new
     end
   end
+
   def edit
   end
+
   def update
     if @task.update(task_params)
       flash[:success] = 'Taskが正常に投稿されました'
@@ -35,6 +40,7 @@ class TasksController < ApplicationController
       render :new
     end    
   end
+
   def destroy
     @task.destroy
     
